@@ -5,7 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - background
-  - tile
+  - clubs
+  - diamonds
+  - hearts
+  - spades
   layers:
   - Default
   - TransparentFX
@@ -42,4 +45,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: background
+    uniqueID: 2560836749
+    locked: 0
+  - name: middleGround
+    uniqueID: 1705338289
+    locked: 0
+  - name: ForeGround
+    uniqueID: 4203308561
     locked: 0

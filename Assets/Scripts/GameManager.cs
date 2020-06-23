@@ -2,49 +2,79 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-
-
+using TMPro;
+using System;
 
 public class GameManager : MonoBehaviour
 {
 
+    public GameObject playerScoreText;
     public GameObject restartBtn;
+    public GameObject HelpCanvas;
 
 
-    public static bool scoreRunning;
+    int score;
+    public bool scoreEnableBool = false;
 
-    // Start is called before the first frame update
+
     void Start()
     {
-        scoreRunning = true;
-
+        score = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (scoreEnableBool)
+        {
+            AddScoreValue();
+        }
     }
 
+    private void AddScoreValue()
+    {
+        score += 50;
+        playerScoreText.GetComponent<TextMeshProUGUI>().text = ("score:" + score.ToString());
+        if (playerScoreText)
+        {
+            playerScoreText.GetComponent<TextMeshProUGUI>().text = ("score:" + score.ToString());
+        }
+        else
+        {
+            Debug.LogError("UI object is not properly refrenced");
+        }
+        scoreEnableBool = false;
 
-
-
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         restartBtn.SetActive(true);
-        Debug.Log("Game over");
         Time.timeScale = 0;
-        scoreRunning = false;
-
     }
 
     public void Restart() {
         restartBtn.SetActive(false);
         SceneManager.LoadScene("main");
         Time.timeScale = 1;
+    }
+
+    public void OnClickOnHelpButton()
+    {
+        HelpCanvas.SetActive(true);
+        Time.timeScale = 0;
+
 
     }
+
+
+    public void CloseHelpCanvasWithOkayButton()
+    {
+        HelpCanvas.SetActive(false);
+        Time.timeScale = 1;
+
+    }
+
+
+
 
 }
