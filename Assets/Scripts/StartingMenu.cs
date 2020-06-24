@@ -7,11 +7,17 @@ using UnityEngine.SceneManagement;
 public class StartingMenu : MonoBehaviour
 {
 
+    public Animator transition;
+    public float transitionTime = 1f;
 
 
+    void Start()
+    {
+    }
     public void playGame() 
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(LevelTransition(SceneManager.GetActiveScene().buildIndex + 1));
+
     }
 
 
@@ -21,6 +27,14 @@ public class StartingMenu : MonoBehaviour
         Application.Quit();
     }
 
+    IEnumerator LevelTransition(int levelInd)
+    {
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(levelInd);
+
+    }
 
  
 

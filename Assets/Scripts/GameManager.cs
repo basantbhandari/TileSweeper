@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using System;
-
 public class GameManager : MonoBehaviour
 {
 
@@ -62,7 +60,6 @@ public class GameManager : MonoBehaviour
     {
         HelpCanvas.SetActive(true);
         Time.timeScale = 0;
-
 
     }
 
